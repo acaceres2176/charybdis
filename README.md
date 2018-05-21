@@ -77,6 +77,7 @@ Run development server:
 ```
 $ ./manage.py runserver
 ```
+The app should now be available on port 8000.
 
 ## Production Deployment
 
@@ -89,4 +90,3 @@ $ sudo chmod 644 /var/log/charybdis/uwsgi.log
 ```
 
 
-The app should now be available on port 8000.
