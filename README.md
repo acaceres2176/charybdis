@@ -54,6 +54,11 @@ $ pip install -r requirements.txt
 $ sudo apt-get install python-software-properties
 ```
 
+### Initialize the app database
+```
+$ ./manage.py migrate
+```
+
 ### Start the app
 Set environment variables:
 ```
