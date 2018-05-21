@@ -50,6 +50,7 @@ $ sudo apt-get install python-software-properties
 ### Initialize the app database
 ```
 $ ./manage.py migrate
+$ ./manage.py collectstatic
 ```
 
 ### Start the app
