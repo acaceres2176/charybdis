@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+
+    <div id="headerwrap">
+
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-6">
+
+            <h1>Hacked<br/>
+
+            password search.</h1>
+
+            <form class="form-inline" action="{% url 'search' %}" method="get" role="form">
+
+              <div class="form-group">
+
+                <input type="hidden" name="start" value="0">
+                <input type="hidden" name="rows" value="10">
+                <input type="hidden" name="wildcards" value="0">
+                <input type="text" class="form-control" id="search" name="query" placeholder="Enter username, site etc">
+
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg">Search</button>
+
+            </form>
+
+          </div><!-- /col-lg-6 -->
+
+          <div class="col-lg-6">
+
+            <img class="img-responsive pull-right" id="banner-icon" src="{% static 'img/charybdis-md.png' %}">
+
+          </div><!-- /col-lg-6 -->
+
+
+
+        </div><!-- /row -->
+
+      </div><!-- /container -->
+
+    </div><!-- /headerwrap -->
+
+    <div class="container">
+        <hr>
+
+        <div class="row mt centered">
+
+            <div class="col-lg-6 col-lg-offset-3">
+
+                <h1><span style="color: #5cb85c;">{{ records|intcomma }}+</span> records</h1>
+
+                <h3>Discover passwords that have been exposed on the open and dark web.</h3>
+
+            </div>
+
+        </div><!-- /row -->
+
+
+
+        <div class="row mt centered">
+            <div class="col-lg-12 ">
+
+                <p>Charybdis provides a searchable index of hacked password data for security researchers. Blah blah, something</p>
+
+            </div>
+
+
+        </div><!-- /row -->
+
+    </div><!-- /container -->
+
+
+
+    <div class="container">
+
+
+        <div class="row centered">
+
+            <div class="col-lg-3 col-lg-offset-3">
+                <a href="{% url 'search' %}" class="btn btn-primary btn-lg">Try it now</a>
+            </div>
+
+            <div class="col-lg-3">
+                <a href="{% url 'signup' %}" class="btn btn-success btn-lg">Sign up</a>
+            </div>
+
+        </div><!-- /row -->
+
+        <hr>
+
+    </div><!-- /container -->
+
+
+{% endblock content %}
