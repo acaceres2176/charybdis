@@ -4,6 +4,12 @@
 
 Requires Python3.5.
 
+
+### Clone repository
+```
+$ sudo git clone git@github.com:acaceres2176/charybdis.git
+```
+
 ### Java 8
 Install:
 
@@ -17,19 +23,6 @@ sudo apt-get update
 
 ```
 sudo apt-get install oracle-java8-installer
-```
-
-### Create user
-```
-$ sudo adduser charybdis
-```
-
-### Create logs
-```
-$ sudo mkdir /var/log/charybdis
-$ sudo touch /var/log/charybdis/uwsgi.log
-$ sudo chmod 644 /var/log/charybdis/uwsgi.log
-% sudo chown -R charybdis:charybdis /var/log/charybdis
 ```
 
 ### Solr
@@ -84,5 +77,16 @@ Run development server:
 ```
 $ ./manage.py runserver
 ```
+
+## Production Deployment
+
+### Create logs
+```
+$ sudo mkdir /var/log/charybdis
+$ sudo touch /var/log/charybdis/uwsgi.log
+$ sudo chmod 644 /var/log/charybdis/uwsgi.log
+% sudo chown -R charybdis:charybdis /var/log/charybdis
+```
+
 
 The app should now be available on port 8000.
