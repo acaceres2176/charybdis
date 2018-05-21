@@ -1,0 +1,55 @@
+{% extends "page.html" %}
+{% load static %}
+
+{% block page-content %}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Payments
+  </div>
+  <div class="panel-body">
+    <div class="row">
+
+      <div class="col-sm-2">
+        <select>
+          <option value="5">Day ($5)</option>
+          <option value="29" selected>Month ($29)</option>
+          <option value="249">Year ($249)</option>
+        </select>
+      </div>
+
+      <div class="col-sm-2">
+        <form action="your-server-side-code" method="POST">
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_4XxInS26VHCH0cXvlrYX58W5"
+            data-amount="999"
+            data-name="Charybdis"
+            data-description="Example charge"
+            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+            data-locale="auto">
+          </script>
+        </form>
+      </div>
+
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>TX Hash</th>
+          <th>Amount</th>
+          <th>Payment ID</th>
+          <th>Block Height</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>db3870905ce3c8ca349e224688c344371addca7be4eb36d5dbc61600c8f75726</td>
+	        <td>1</td>
+          <td>fdfcfd993482b58b</td>
+          <td>1157951</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock page-content %}
