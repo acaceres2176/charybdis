@@ -3,7 +3,9 @@
 import requests
 import pprint
 
-_solr_schema_url = 'http://localhost:8983/solr/credentials/schema'
+_collection_name = 'credentials'
+_solr_collections_url = 'http://localhost:8983/solr/admin/collections'
+_solr_schema_url = 'http://localhost:8983/solr/' + _collection_name + '/schema'
 
 
 def add_fields():
@@ -62,6 +64,24 @@ def add_field(field):
     return r
 
 
+def add_collection():
+    """
+    Add credentials collection to Solr schema.
+
+    :returns: Requests.Response.
+    :raises: Request.Exception
+    """
+    params = {
+        'action': 'CREATE',
+        'name': _collection_name,
+        'numShards': 2,
+        'replicationFactor': 1
+    }
+    r = requests.params(_solr_collections_url, params=params)
+    r.raise_for_status()
+    return r
+
+
 def view_schema():
     r = requests.get(_solr_schema_url)
     r.raise_for_status()
@@ -69,6 +89,8 @@ def view_schema():
 
 
 if __name__ == '__main__':
+    add_collection()
+    print('Created collection: {}'.format(_collection_name))
     add_fields()
     print('Successfully created schema')
-    # view_schema()
+    view_schema()
