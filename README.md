@@ -59,9 +59,13 @@ $ pip install -r requirements.txt
 $ sudo apt-get install python-software-properties
 ```
 
-### Initialize the app database
+### Initialize the app
+Intialize the database:
 ```
 $ ./manage.py migrate
+```
+Copy all static files to the static directory:
+```
 $ ./manage.py collectstatic
 ```
 
