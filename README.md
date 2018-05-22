@@ -10,6 +10,16 @@ Requires Python3.5.
 $ sudo git clone git@github.com:acaceres2176/charybdis.git
 ```
 
+### User and permissions
+```
+$ sudo adduser -M charybdis
+$ sudo usermod -L charybdis
+$ sudo chown -R charybdis:charybdis
+$ sudo chmod g+rwx charybdis
+$ sudo adduser $USER charybdis
+$ sudo adduser www-data charybdis
+```
+
 ### Java 8
 Install:
 
@@ -35,6 +45,8 @@ $ curl -LO https://archive.apache.org/dist/lucene/solr/6.6.0/solr-6.6.0.tgz
 $ tar -C solr -xf solr-6.6.0.tgz --strip-components=1
 $ sudo ./solr/bin/install_solr_service.sh solr-6.6.0.tgz
 $ sudo chown -R solr:solr /var/solr/
+$ sudo adduser solr charybdis
+$ sudo chmod g+rwx .solr/server/logs
 ```
 
 ### Python dependencies
@@ -50,6 +62,22 @@ $ sudo apt-get install python-software-properties
 ### Initialize the app database
 ```
 $ ./manage.py migrate
+=======
+### Initiliaze Solr schema
+Create schema:
+```
+$ ./createschema.py
+```
+
+
+
+### Initialize the app
+Intialize the database:
+```
+$ ./manage.py migrate
+```
+Copy all static files to the static directory:
+```
 $ ./manage.py collectstatic
 ```
 
@@ -83,11 +111,24 @@ The app should now be available on port 8000.
 ## Production Deployment
 
 ### Create logs
+Logging isn't configured yet.
 ```
 $ sudo mkdir /var/log/charybdis
-$ sudo touch /var/log/charybdis/uwsgi.log
-$ sudo chmod 644 /var/log/charybdis/uwsgi.log
+$ sudo touch /var/log/charybdis/gunicorn.log
+$ sudo chmod 644 /var/log/charybdis/gunicorn.log
 % sudo chown -R charybdis:charybdis /var/log/charybdis
 ```
 
+### Gunicorn
+```
+$ pip install gunicorn
+$ cd /opt/charybdis/
+$ gunicorn --bind 0.0.0.0:8000 charybdis.wsgi
+```
 
+### Nginx
+```
+$ sudo cp charybdis_nginx.conf /etc/nginx/sites-available/charybdis
+$ sudo ln -s /etc/nginx/sites-available/charybdis /etc/nginx/sites-enabled/
+$ sudo service nginx reload
+```
