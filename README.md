@@ -14,7 +14,7 @@ $ sudo git clone git@github.com:acaceres2176/charybdis.git
 ```
 $ sudo adduser -M charybdis
 $ sudo usermod -L charybdis
-$ sudo chown -R charybdis:charybdis
+$ sudo chown -R charybdis:charybdis charybdis
 $ sudo chmod g+rwx charybdis
 $ sudo adduser $USER charybdis
 $ sudo adduser www-data charybdis
@@ -41,12 +41,14 @@ Install:
 ```
 $ cd PROJECT_DIR
 $ mkdir solr
+$ sudo chown charybdis:charybdis solr
+$ sudo chmod g+s charybdis
 $ curl -LO https://archive.apache.org/dist/lucene/solr/6.6.0/solr-6.6.0.tgz
 $ tar -C solr -xf solr-6.6.0.tgz --strip-components=1
 $ sudo ./solr/bin/install_solr_service.sh solr-6.6.0.tgz
 $ sudo chown -R solr:solr /var/solr/
 $ sudo adduser solr charybdis
-$ sudo chmod g+rwx .solr/server/logs
+$ sudo chmod g+rwx ./solr/server/logs
 ```
 
 ### Python dependencies
@@ -62,14 +64,17 @@ $ sudo apt-get install python-software-properties
 ### Initialize the app database
 ```
 $ ./manage.py migrate
-=======
+```
+
 ### Initiliaze Solr schema
+Create collection:
+```
+$ sudo su - solr -c "/opt/charybdis/solr/bin/solr create -c credentials -n data_driven_schema_configs"
+```
 Create schema:
 ```
 $ ./createschema.py
 ```
-
-
 
 ### Initialize the app
 Intialize the database:
