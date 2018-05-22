@@ -59,6 +59,10 @@ $ pip install -r requirements.txt
 $ sudo apt-get install python-software-properties
 ```
 
+### Initialize the app database
+```
+$ ./manage.py migrate
+=======
 ### Initiliaze Solr schema
 Create schema:
 ```
@@ -128,5 +132,3 @@ $ sudo cp charybdis_nginx.conf /etc/nginx/sites-available/charybdis
 $ sudo ln -s /etc/nginx/sites-available/charybdis /etc/nginx/sites-enabled/
 $ sudo service nginx reload
 ```
-
-
