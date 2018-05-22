@@ -77,7 +77,7 @@ def add_collection():
         'numShards': 2,
         'replicationFactor': 1
     }
-    r = requests.params(_solr_collections_url, params=params)
+    r = requests.get(_solr_collections_url, params=params)
     r.raise_for_status()
     return r
 
