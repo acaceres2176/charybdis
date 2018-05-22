@@ -1,0 +1,4 @@
+monero/
+solr/
+*.pyc
+stripe_envs

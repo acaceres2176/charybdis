@@ -1,0 +1,9 @@
+cerberus
+ccxt
+django
+django-widget-tweaks
+pymonerowallet
+requests
+scorched
+stripe
+uwsgi
