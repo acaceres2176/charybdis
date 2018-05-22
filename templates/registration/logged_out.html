@@ -1,0 +1,14 @@
+{% extends 'page.html' %}
+{% load i18n %}
+
+{% block page-content %}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Logged out
+  </div>
+  <div class="panel-body">
+    <p>Thanks for spending time with Charybdis.</p>
+    <p><a href="{% url 'login' %}">Log in again</a></p>
+  </div>
+</div>
+{% endblock %}
