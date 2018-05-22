@@ -1,0 +1,81 @@
+{% extends "page.html" %}
+{% load static %}
+
+{% block page-content %}
+<div class="panel panel-success">
+  <div class="panel-heading">
+    Account
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-1">
+        <strong>Status:</strong>
+      </div>
+      <div class="col-sm-1">
+        <span class="label label-success">Active</span>
+      </div>
+      <div class="col-sm-2">
+        <strong>Time remaining:</strong>
+      </div>
+      <div class="col-sm-1">
+        21 days
+      </div>
+      <div class="col-sm-2">
+        <strong>Next payment date:</strong>
+      </div>
+      <div class="col-sm-1">
+        2018/02/10
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <strong>Monero wallet address:</strong>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="well well-sm text-center">
+	  123456789j0123456789012345678901234567890
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <small>This is your unique monero payment wallet.</small>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Payments
+  </div>
+  <div class="panel-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>TX Hash</th>
+            <th>Amount</th>
+            <th>Payment ID</th>
+            <th>Block Height</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>db3870905ce3c8ca349e224688c344371addca7be4eb36d5dbc61600c8f75726</td>
+	    <td>1</td>
+	    <td>fdfcfd993482b58b</td>
+	    <td>1157951</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="col-sm-2">
+      </div>
+  </div>
+</div>
+{% endblock page-content %}

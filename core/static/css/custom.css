@@ -1,0 +1,317 @@
+/* Custom styles here */
+body {
+  padding-top: 70px;
+  /*background-color: #000000;*/
+  /*background-color: #00000;*/
+  background-color: #f2f2f2;
+
+}
+
+/* Titles */
+h1, h2, h3, h4, h5, h6 {
+    color: #000;
+}
+
+p {
+  color: #000;
+}
+
+#messages-container {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  font-size: 14pt;
+}
+
+.message-success {
+  background-color: #4cae4c;
+  border: 1px solid;
+  border-color: #4cae4c;
+  color: #fff;
+}
+
+.message-info {
+  background-color: #5bc0de;
+  border: 1px solid;
+  border-color: #46b8da;
+  color: #fff;
+}
+
+.message-warning {
+  background-color: #f0ad4e;
+  border: 1px solid;
+  border-color: #eea236;
+  color: #fff;
+}
+
+.message-error {
+  background-color: #d9534f;
+  border: 1px solid;
+  border-color: #d43f3a;
+  color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+  color: #555E5E;
+}
+.navbar-default {
+  background-color: #363636;
+}
+
+#headerwrap {
+  background-color: #f2f2f2;
+  color: black;
+	padding-top: 100px;
+	min-height: 400px;
+  /*background: linear-gradient(to top, rgba(255,0,0,0), rgba(255,255,255,1));*/
+}
+
+#headerwrap h1 {
+	color: #000;
+}
+
+
+.page-container {
+  margin-top: 20px;
+}
+
+.container > h1,h2 {
+  margin-bottom: 40px;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+form#search-form > div.form-group > input[type=text] {
+  width: 100% !important;
+}
+
+div#search-panel > div.panel-heading {
+  padding-top: 20px;
+}
+
+
+span.awaiting-input {
+  font-size: 18pt;
+}
+img.awaiting-input {
+  width: 100px;
+}
+
+
+/* Checkboxes */
+input[type=checkbox] {
+    visibility: hidden;
+}
+
+div.checkbox-slider {
+  width: 120px;
+  height: 40px;
+  background: #f5f5f5;
+  margin: 5px 20px;
+
+  border-radius: 50px;
+  position: relative;
+}
+/**
+ * Create the text for the On position
+ */
+div.checkbox-slider:before {
+  content: 'On';
+  position: absolute;
+  top: 8px;
+  left: 13px;
+  height: 2px;
+  color: #5cb85c;
+  font-size: 16px;
+  font-weight: bold;
+}
+/**
+ * Create the label for the off position
+ */
+.checkbox-slider:after {
+  content: 'Off';
+  position: absolute;
+  top: 8px;
+  left: 84px;
+  height: 2px;
+  color: #333;
+  font-size: 16px;
+}
+/**
+ * Create the checkbox event for the label
+ */
+.checkbox-slider input[type=checkbox]:checked + label {
+  left: 60px;
+  background: #5cb85c;
+}
+/**
+ * Create the pill to click
+ */
+.checkbox-slider label {
+  display: block;
+  width: 52px;
+  height: 22px;
+  border-radius: 50px;
+
+  transition: all .5s ease;
+  cursor: pointer;
+  position: absolute;
+  top: 9px;
+  z-index: 1;
+  left: 12px;
+  background: #ddd;
+}
+
+span.checkbox-slider-label {
+  position: absolute;
+  margin-top: 20px;
+  padding-top: 20px;
+  font-size: 10pt;
+  font-weight: bolder;
+  width: 50%;
+}
+
+
+/**
+ * Pricing
+ */
+div.pricing {
+  text-align: center;
+}
+
+div.pricing > div.panel-heading {
+  background-color: #363636;
+  color: white;
+  font-size: 3em;
+}
+
+div.pricing > div.panel-body {
+  font-size: 1.5em;
+}
+
+div.pricing > div.panel-footer {
+  border: 1px solid #ddd;
+}
+
+/*============================================================
+Pricing BACKGROUND COLORS
+============================================================*/
+.db-bk-color-one {
+    /*background-color: #f55039;*/
+    background-color: #a6a6a6;
+}
+
+.db-bk-color-two {
+    /*background-color: #46A6F7;*/
+    background-color: #808080;
+
+}
+
+.db-bk-color-three {
+    /*background-color: #47887E;*/
+    background-color: #595959;
+}
+
+.db-bk-color-six {
+    background-color: #F59B24;
+}
+/*============================================================
+PRICING STYLES
+==========================================================*/
+.db-padding-btm {
+    padding-bottom: 50px;
+}
+.db-button-color-square {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.50);
+    border: none;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+}
+
+    .db-button-color-square:hover {
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.50);
+        border: none;
+    }
+
+
+.db-pricing-eleven {
+    margin-bottom: 30px;
+    margin-top: 50px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+    color: #fff;
+    line-height: 30px;
+}
+
+    .db-pricing-eleven ul {
+        list-style: none;
+        margin: 0;
+        text-align: center;
+        padding-left: 0px;
+    }
+
+        .db-pricing-eleven ul li {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            cursor: pointer;
+        }
+
+            .db-pricing-eleven ul li i {
+                margin-right: 5px;
+            }
+
+
+    .db-pricing-eleven .price {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 40px 20px 20px 20px;
+        font-size: 60px;
+        font-weight: 900;
+        color: #FFFFFF;
+    }
+
+        .db-pricing-eleven .price small {
+            color: #B8B8B8;
+            display: block;
+            font-size: 12px;
+            margin-top: 22px;
+        }
+
+    .db-pricing-eleven .type {
+        background-color: #52E89E;
+        padding: 50px 20px;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 30px;
+    }
+
+    .db-pricing-eleven .pricing-footer {
+        padding: 20px;
+    }
+
+.db-attached > .col-lg-4,
+.db-attached > .col-lg-3,
+.db-attached > .col-md-4,
+.db-attached > .col-md-3,
+.db-attached > .col-sm-4,
+.db-attached > .col-sm-3 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.db-pricing-eleven.popular {
+    margin-top: 10px;
+}
+
+.db-pricing-eleven.popular .price {
+    padding-top: 80px;
+}

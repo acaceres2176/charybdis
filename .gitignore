@@ -1,0 +1,5 @@
+monero/
+solr/
+*.pyc
+stripe_envs
+db.sqlite3
