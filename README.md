@@ -59,6 +59,14 @@ $ pip install -r requirements.txt
 $ sudo apt-get install python-software-properties
 ```
 
+### Initiliaze Solr schema
+Create schema:
+```
+$ ./createschema.py
+```
+
+
+
 ### Initialize the app
 Intialize the database:
 ```
