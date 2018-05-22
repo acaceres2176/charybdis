@@ -3,3 +3,4 @@ solr/
 *.pyc
 stripe_envs
 db.sqlite3
+stripe_info.sh
