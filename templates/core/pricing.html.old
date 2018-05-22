@@ -1,0 +1,73 @@
+{% extends 'page.html' %}
+{% load i18n widget_tweaks %}
+{% load humanize %}
+
+{% block page-content %}
+<div class="container"> <!-- .container -->
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-default pricing">
+        <div class="panel-heading">
+          Hour
+        </div>
+        <div class="panel-body">
+	  <div class="row">
+            <div class="col-sm-12">
+              <strong>${{ dollars_per_hour|floatformat:2|intcomma }}</strong>
+	    </div>
+            <div class="col-sm-12">
+              {{ monero_per_hour|floatformat:10|intcomma }} XMR
+	    </div>
+	  </div>
+        </div>
+	<div class="panel-footer">
+	  <a href="{% url 'signup' %}" class="btn btn-success">Sign me up</a>
+	</div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-default pricing">
+        <div class="panel-heading">
+          Day
+        </div>
+        <div class="panel-body">
+	  <div class="row">
+            <div class="col-sm-12">
+              <strong>${{ dollars_per_day|floatformat:2|intcomma }}</strong>
+	    </div>
+            <div class="col-sm-12">
+              {{ monero_per_day|floatformat:10|intcomma }} XMR
+	    </div>
+	  </div>
+        </div>
+	<div class="panel-footer">
+	  <a href="{% url 'signup' %}" class="btn btn-success">Sign me up</a>
+	</div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-default pricing">
+        <div class="panel-heading">
+          Month
+        </div>
+        <div class="panel-body">
+	  <div class="row">
+            <div class="col-sm-12">
+              <strong>${{ dollars_per_month|floatformat:2|intcomma }}</strong>
+	    </div>
+            <div class="col-sm-12">
+              {{ monero_per_month|floatformat:10|intcomma }} XMR
+	    </div>
+	  </div>
+        </div>
+	<div class="panel-footer">
+	  <a href="{% url 'signup' %}" class="btn btn-success">Sign me up</a>
+	</div>
+      </div>
+    </div>
+  </div>
+  <div class="alert alert-default">
+    <small>XMR/USD rate: ${{ monero_usd_rate|floatformat:2 }} as of {{ timestamp }} UTC.</small>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "page.html" %}
+{% load static %}
+
+{% block page-content %}
+<div id="search-panel" class="panel panel-default">
+  <div class="panel-heading">
+    <form id="search-form" class="form-inline center row" action="{% url 'search' %}" method="get" role="form">
+      <div class="form-group col-sm-10">
+        <input type="hidden" name="start" value="0">
+        <input type="hidden" name="rows" value="10">
+        <input type="text" class="form-control" id="search" name="query" placeholder="Enter username, site etc" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg col-sm-2">Search</button>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="checkbox-slider col-sm-2">
+        <input type="checkbox" name="wildcards" value="1" {% if wildcards == 1 %}checked {% endif %} id="checkbox-wildcards">
+        <label for="checkbox-wildcards"></label>
+  <span class='checkbox-slider-label'>Wildcards</span>
+      </div>
+      <div class="col-sm-10">
+  <div class="well">Allow the use of * and ? characters. Otherwise the search performed is exact match.</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1 text-center">
+      </div>
+      <div class="col-sm-1">
+      </div>
+      <div class="col-sm-1">
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
+{% if results is not None %}
+  {% if results|length > 0 %}
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>Password</th>
+              <th>Domain</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for result in results %}
+              <tr>
+                <td>{{ result.username }}</td>
+                {% if account_active %}
+                  <td>{{ result.password }}</td>
+                {% else %}
+                  <td>########</td>
+                {% endif %}
+                <td>{{ result.domain }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <div class="col-sm-2">
+          {{ start }} - {{ end }} of {{ found }}
+        </div>
+        {% if pages %}
+          <div class="pull-right">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+              {% for page in pages %}
+                <li class="page-item">
+                  <a class="page-link" href="{{ page }}">
+                  {{ forloop.counter }}
+                  </a>
+               </li>
+              {% endfor %}
+              </ul>
+            </nav>
+          </div>
+        {% endif %}
+        </div>
+      </div>
+      {% if account_active == False %}
+        <div class="alert alert-danger">Top up your <a href="{% url 'account' %}">account</a> to view passwords.</div>
+      {% endif %}
+  {% else %}
+    <div class="alert alert-info">No results</div>
+  {% endif %}
+{% endif %}
+{% endblock page-content %}
