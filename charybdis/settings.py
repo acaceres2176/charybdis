@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 3rd pary
     'widget_tweaks',
-    'debug_toolbar',
+#    'debug_toolbar',
     # App
     'core',
     'search',
