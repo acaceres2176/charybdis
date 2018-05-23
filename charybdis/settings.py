@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 3rd pary
     'widget_tweaks',
-#    'debug_toolbar',
     # App
     'core',
     'search',
@@ -57,7 +56,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'charybdis.urls'
@@ -151,8 +149,13 @@ SOLR_URLS = {
 # Payments
 DOLLARS_PER_SECOND = 0.000008796  # $0.76/day
 DOLLARS_PER_DAY = 5
-DOLLARS_PER_MONTH = 30
+DOLLARS_PER_MONTH = 29
 DOLLARS_PER_YEAR = 250
+PAYMENT_DAYS = {
+    500: 1,
+    2900: 30,
+    24900: 365,
+}
 
 # Stripe
 STRIPE_LIVE_PUBLIC_KEY = os.environ.get("STRIPE_LIVE_PUBLIC_KEY", None)

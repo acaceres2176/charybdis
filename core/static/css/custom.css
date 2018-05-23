@@ -315,3 +315,11 @@ PRICING STYLES
 .db-pricing-eleven.popular .price {
     padding-top: 80px;
 }
+
+/*
+ * Payment
+ */
+
+#select-amount {
+  height: 32px;
+}

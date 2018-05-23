@@ -26,5 +26,7 @@ class StripePayment(models.Model):
     charge_id = models.CharField(max_length=250)
     amount = models.DecimalField(max_digits=12, decimal_places=2)
     created = models.DateTimeField(default=timezone.now)
-    email = models.CharField(max_length=250)
+    email = models.CharField(max_length=250, null=True)
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
+    days = models.IntegerField(default=30)
+    expires = models.DateTimeField(default=timezone.now)

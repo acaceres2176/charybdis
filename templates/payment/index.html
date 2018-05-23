@@ -8,23 +8,35 @@
   </div>
   <div class="panel-body">
     <div class="row">
-
       <div class="col-sm-2">
-        <select>
-          <option value="5">Day ($5)</option>
-          <option value="29" selected>Month ($29)</option>
-          <option value="249">Year ($249)</option>
-        </select>
+        <form class="form-inline" action="{% url 'payment' %}" method="POST">
+        {% csrf_token %}
+          <select
+            id="select-amount"
+            name="amount-selected"
+            onchange="this.form.submit()">
+            <option value="5" {% if amount == 5 %}selected{% endif %}>
+              1 Day ($5)
+            </option>
+            <option value="29" {% if amount == 29 %}selected{% endif %}>
+              1 Month ($29)
+            </option>
+            <option value="249" {% if amount == 249 %}selected{% endif %}>
+              1 Year ($249)
+            </option>
+          </select>
+        </form>
       </div>
-
       <div class="col-sm-2">
-        <form action="your-server-side-code" method="POST">
+        <form class="form-inline" action="{% url 'payment' %}" method="POST">
+        {% csrf_token %}
+         <input type="hidden" name="amount" value="{{ amount }}">
           <script
             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="pk_test_4XxInS26VHCH0cXvlrYX58W5"
-            data-amount="999"
+            data-key="{{ stripe_public_key }}"
+            data-amount="{{ cent_amount }}"
             data-name="Charybdis"
-            data-description="Example charge"
+            data-description="Month"
             data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
             data-locale="auto">
           </script>
@@ -35,19 +47,23 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>TX Hash</th>
+          <th>Date</th>
+          <th>Transaction ID</th>
           <th>Amount</th>
-          <th>Payment ID</th>
-          <th>Block Height</th>
+          <th>Days</th>
+          <th>Expires</th>
         </tr>
       </thead>
       <tbody>
+        {% for payment in payments %}
         <tr>
-          <td>db3870905ce3c8ca349e224688c344371addca7be4eb36d5dbc61600c8f75726</td>
-	        <td>1</td>
-          <td>fdfcfd993482b58b</td>
-          <td>1157951</td>
+          <td>{{ payment.created }}</td>
+          <td>{{ payment.charge_id }}</td>
+          <td>${{ payment.amount }}</td>
+          <td>{{ payment.days }}</td>
+          <td>{{ payment.expires }}</td>
         </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>
