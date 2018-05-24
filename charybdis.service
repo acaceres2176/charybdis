@@ -1,0 +1,13 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=charybdis
+Group=www-data
+WorkingDirectory=/opt/charybdis
+ExecStart=/opt/charybdis/env/bin/gunicorn --bind 0.0.0.0:8000 -k gevent --timeout 10 --workers 2 charybdis.wsgi
+
+[Install]
+WantedBy=multi-user.target
+
