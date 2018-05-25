@@ -29,6 +29,7 @@ class Command(BaseCommand):
                     document['id'] = doc_id
                     solr.add(document)
                     count += 1
+                    self.stdout.write(self.style.SUCCESS('Document {} added!'.format(count)))
                 except Exception as e:
                     self.stdout.write(
                         self.style.WARNING(
