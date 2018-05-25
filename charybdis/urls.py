@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^payment/', include('payment.urls')),
     url(r'^pricing/$', core_views.pricing, name='pricing'),
+    url(r'^contact/$', core_views.contact, name='contact'),
     url(r'^$', core_views.home, name='home'),
 ]
 

@@ -1,10 +1,7 @@
-import ccxt
 from django.conf import settings
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.utils import timezone
 
 
 def home(request):
@@ -14,6 +11,13 @@ def home(request):
     context_data = {'records': 10000000}
 
     return render(request, 'core/home.html', context_data)
+
+
+def contact(request):
+    """
+    Contact page view.
+    """
+    return render(request, 'core/contact.html')
 
 
 def pricing(request):
