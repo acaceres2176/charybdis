@@ -122,6 +122,7 @@ def add_url_params(url, params):
 class SearchView(View):
     solr = apps.get_app_config('search').solr
     template_name = 'search/index.html'
+    paginate_by = 10
     schema = {
         'query': {'type': 'string'},
         'wildcards': {'type': 'boolean', 'default': False},
@@ -137,7 +138,6 @@ class SearchView(View):
         Parse options from GET request.
         """
         options = dict(request.GET.items())
-        print(options)
         # Attempt to convert values to schema types
         for key, scheme in self.schema.items():
             if key in options:
@@ -179,37 +179,62 @@ class SearchView(View):
 
         return solr_response
 
-    def _pagination_links(self, url, total_results, start, rows):
+    def _get_pages(self, url, total_results, start, rows):
         """
         Return list of paginated links.
         """
         # Generate links for all pages of results
+        urls = self._pagination_urls(url, total_results, start, rows)
+        url = get_ordered_url(url)
+        pages = []
+        # Truncate the links and add paging numbers
+        url_index = urls.index(url)
+        if url_index > 5:
+            start = url_index - 5
+            end = url_index + 5
+        else:
+            start = 0
+            end = 10
+
+        for page_url in urls[start: end]:
+            page = {
+                'index': urls.index(page_url),
+                'url': page_url
+            }
+
+            pages.append(page)
+
+        return pages
+
+    def _pagination_urls(self, url, total_results, start, rows):
+        # Generate links for all pages of results
         urls = []
-        page_urls = []
         url = get_ordered_url(url)
         for i in range(0, total_results, rows):
             params = {
                 'start': i,
                 'rows': rows,
             }
-            urls.append(add_url_params(url, params))
+            page_url = add_url_params(url, params)
+            urls.append(page_url)
+        return urls
 
-        if len(urls) > 0:
-            # Truncate the the links
-            if urls.index(url) > 5 and \
-                    urls.index(url) < len(urls) - 5:
-                # Show first 5, current page, last 5
-                page_urls = urls[:5]
-                page_urls.append(url)
-                page_urls.extend(urls[-5:])
-            elif urls.index(url) >= len(urls) - 5:
-                # Show last 11
-                page_urls = urls[:-10]
-            else:
-                # Show 11
-                page_urls = urls[:10]
+    def _get_first_page_url(self, url, total_results, start, rows):
+        # Generate links for all pages of results
+        urls = self._pagination_urls(url, total_results, start, rows)
+        try:
+            return urls[0]
+        except KeyError:
+            return None
 
-        return page_urls
+    def _get_last_page_url(self, url, total_results, start, rows):
+        # Generate links for all pages of results
+        urls = self._pagination_urls(url, total_results, start, rows)
+        try:
+            last_page_url = urls[len(urls) - 1]
+            return last_page_url
+        except KeyError:
+            return None
 
     def _solr_response_details(self, solr_response):
         """
@@ -226,7 +251,7 @@ class SearchView(View):
 
         details['found'] = results
         details['start'] = solr_response.result.start
-        details['end'] = len(solr_response)
+        details['end'] = details['start'] + len(solr_response)
 
         return details
 
@@ -260,11 +285,18 @@ class SearchView(View):
             solr_response = self._solr_query(options)
             details = self._solr_response_details(solr_response)
             results = list(solr_response)
-            pages = self._pagination_links(request.get_full_path(),
-                                           details['found'],
-                                           details['start'],
-                                           details['rows'])
-
+            pages = self._get_pages(request.get_full_path(),
+                                    details['found'],
+                                    details['start'],
+                                    details['rows'])
+            first_page = self._get_first_page_url(request.get_full_path(),
+                                                  details['found'],
+                                                  details['start'],
+                                                  details['rows'])
+            last_page = self._get_last_page_url(request.get_full_path(),
+                                                details['found'],
+                                                details['start'],
+                                                details['rows'])
             context_data = {'account_active': account_active,
                             'results': results,
                             'start': details['start'] + 1,  # human-facing count
@@ -272,6 +304,8 @@ class SearchView(View):
                             'wildcards': int(options['wildcards']),
                             'rows': details['rows'],
                             'pages': pages,
+                            'first_page': first_page,
+                            'last_page': last_page,
                             'found': details['found']}
 
         return render(request, self.template_name, context_data)
