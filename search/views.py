@@ -188,21 +188,25 @@ class SearchView(View):
         url = get_ordered_url(url)
         pages = []
         # Truncate the links and add paging numbers
-        url_index = urls.index(url)
-        if url_index > 5:
-            start = url_index - 5
-            end = url_index + 5
-        else:
-            start = 0
-            end = 10
+        if urls:
+            try:
+                url_index = urls.index(url)
+                if url_index > 5:
+                    start = url_index - 5
+                    end = url_index + 5
+                else:
+                    start = 0
+                    end = 10
 
-        for page_url in urls[start: end]:
-            page = {
-                'index': urls.index(page_url),
-                'url': page_url
-            }
+                for page_url in urls[start: end]:
+                    page = {
+                        'index': urls.index(page_url),
+                        'url': page_url
+                    }
 
-            pages.append(page)
+                    pages.append(page)
+            except ValueError:
+                pass
 
         return pages
 
@@ -216,7 +220,7 @@ class SearchView(View):
                 'rows': rows,
             }
             page_url = add_url_params(url, params)
-            urls.append(page_url)
+            urls.append(get_ordered_url(page_url))
         return urls
 
     def _get_first_page_url(self, url, total_results, start, rows):
@@ -224,7 +228,7 @@ class SearchView(View):
         urls = self._pagination_urls(url, total_results, start, rows)
         try:
             return urls[0]
-        except KeyError:
+        except IndexError:
             return None
 
     def _get_last_page_url(self, url, total_results, start, rows):
@@ -233,7 +237,7 @@ class SearchView(View):
         try:
             last_page_url = urls[len(urls) - 1]
             return last_page_url
-        except KeyError:
+        except IndexError:
             return None
 
     def _solr_response_details(self, solr_response):
