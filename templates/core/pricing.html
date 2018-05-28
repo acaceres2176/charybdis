@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block page-content %}
+{% comment %}
 <div class="row db-padding-btm db-attached">
   <div class="col-lg-1">
   </div>
@@ -22,7 +23,7 @@
       </ul>
       <div class="pricing-footer">
 
-	      <a href="{% url 'signup' %}" class="btn db-button-color-square btn-lg">SIGN UP</a>
+        <a href="{% url 'signup' %}" class="btn db-button-color-square btn-lg">SIGN UP</a>
       </div>
         </div>
     </div>
@@ -45,7 +46,7 @@
           </ul>
           <div class="pricing-footer">
 
-		  <a href="{% url 'signup' %}" class="btn db-button-color-square btn-lg">SIGN UP</a>
+      <a href="{% url 'signup' %}" class="btn db-button-color-square btn-lg">SIGN UP</a>
           </div>
       </div>
     </div>
@@ -66,11 +67,194 @@
             <li><i class="glyphicon glyphicon-trash"></i>Something</li>
           </ul>
           <div class="pricing-footer">
-
-		  <a href="{% url 'signup' %}" class="btn db-button-color-square btn-lg">SIGN UP</a>
+            <a href="{% url 'signup' %}" class="btn db-button-color-square btn-lg">SIGN UP</a>
           </div>
       </div>
     </div>
   </div>
+</div>
+{% endcomment %}
+<! ========================
+    Pricing Table
+  ========================  !>
+<div id="generic_price_table">
+  <section>
+     <div class="container">
+         <!--BLOCK ROW START-->
+         <div class="row">
+             <div class="col-md-4">
+
+               <!--PRICE CONTENT START-->
+                 <div class="generic_content clearfix">
+
+                     <!--HEAD PRICE DETAIL START-->
+                     <div class="generic_head_price clearfix">
+
+                         <!--HEAD CONTENT START-->
+                         <div class="generic_head_content clearfix">
+
+                           <!--HEAD START-->
+                             <div class="head_bg"></div>
+                             <div class="head">
+                                 <span>Day</span>
+                             </div>
+                             <!--//HEAD END-->
+
+                         </div>
+                         <!--//HEAD CONTENT END-->
+
+                         <!--PRICE START-->
+                         <div class="generic_price_tag clearfix">
+                             <span class="price">
+                                 <span class="sign">$</span>
+                                 <span class="currency">5</span>
+                             </span>
+                         </div>
+                         <!--//PRICE END-->
+
+                     </div>
+                     <!--//HEAD PRICE DETAIL END-->
+
+                     <!--FEATURE LIST START-->
+                     <div class="generic_feature_list">
+                       <ul>
+                           <li><span>1000000+</span> Records</li>
+                           <li><span>Unlimited</span> Access</li>
+                         </ul>
+                     </div>
+                     <!--//FEATURE LIST END-->
+
+                     <!--BUTTON START-->
+                     <div class="generic_price_btn clearfix">
+                       <a class="" href="{% url 'signup' %}">Sign up</a>
+                     </div>
+                     <!--//BUTTON END-->
+
+                 </div>
+                 <!--//PRICE CONTENT END-->
+
+             </div>
+
+             <div class="col-md-4">
+
+               <!--PRICE CONTENT START-->
+                 <div class="generic_content clearfix">
+
+                     <!--HEAD PRICE DETAIL START-->
+                     <div class="generic_head_price clearfix">
+
+                         <!--HEAD CONTENT START-->
+                         <div class="generic_head_content clearfix">
+
+                           <!--HEAD START-->
+                             <div class="head_bg"></div>
+                             <div class="head">
+                                 <span>Month</span>
+                             </div>
+                             <!--//HEAD END-->
+
+                         </div>
+                         <!--//HEAD CONTENT END-->
+
+                         <!--PRICE START-->
+                         <div class="generic_price_tag clearfix">
+                             <span class="price">
+                                 <span class="sign">$</span>
+                                 <span class="currency">29</span>
+                             </span>
+                         </div>
+                         <!--//PRICE END-->
+
+                     </div>
+                     <!--//HEAD PRICE DETAIL END-->
+
+                     <!--FEATURE LIST START-->
+                     <div class="generic_feature_list">
+                       <ul>
+			                   <li>
+                           <span class="sign">$</span>
+                           <span class="currency">0</span>
+                           <span class="cent">.97</span>
+                           <span class="month">/DAY</span>
+                         </li>
+                         <li><span>1000000+</span> Records</li>
+                         <li><span>Unlimited</span> Access</li>
+                       </ul>
+                     </div>
+                     <!--//FEATURE LIST END-->
+
+                     <!--BUTTON START-->
+                     <div class="generic_price_btn clearfix">
+                       <a class="" href="{% url 'signup' %}">Sign up</a>
+                     </div>
+                     <!--//BUTTON END-->
+
+                 </div>
+                 <!--//PRICE CONTENT END-->
+
+             </div>
+             <div class="col-md-4">
+
+               <!--PRICE CONTENT START-->
+                 <div class="generic_content active clearfix">
+
+                     <!--HEAD PRICE DETAIL START-->
+                     <div class="generic_head_price clearfix">
+
+                         <!--HEAD CONTENT START-->
+                         <div class="generic_head_content clearfix">
+
+                           <!--HEAD START-->
+                             <div class="head_bg"></div>
+                             <div class="head">
+                                 <span>Year</span>
+                             </div>
+                             <!--//HEAD END-->
+
+                         </div>
+                         <!--//HEAD CONTENT END-->
+
+                         <!--PRICE START-->
+                         <div class="generic_price_tag clearfix">
+                             <span class="price">
+                                 <span class="sign">$</span>
+                                 <span class="currency">249</span>
+                             </span>
+                         </div>
+                         <!--//PRICE END-->
+
+                     </div>
+                     <!--//HEAD PRICE DETAIL END-->
+
+                     <!--FEATURE LIST START-->
+                     <div class="generic_feature_list">
+                       <ul>
+			                   <li>
+                           <span class="sign">$</span>
+                           <span class="currency">0</span>
+                           <span class="cent">.68</span>
+                           <span class="month">/DAY</span>
+                         </li>
+                         <li><span>1000000+</span> Records</li>
+                         <li><span>Unlimited</span> Access</li>
+                       </ul>
+                     </div>
+                     <!--//FEATURE LIST END-->
+
+                     <!--BUTTON START-->
+                     <div class="generic_price_btn clearfix">
+                       <a class="{% url 'signup' %}" href="">Sign up</a>
+                     </div>
+                     <!--//BUTTON END-->
+
+                 </div>
+                 <!--//PRICE CONTENT END-->
+
+             </div>
+         </div>
+         <!--//BLOCK ROW END-->
+
+     </div>
+    </section>
 </div>
 {% endblock page-content %}
